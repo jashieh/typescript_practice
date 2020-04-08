@@ -60,20 +60,21 @@ type NumVal = 1 | 2 | 3 | NumVal[];
  * }
  */
 
-// interface PhoneNumberDict {
-//   // arr[0],  foo['myProp']
-//   [numberName: string]:
-//     | undefined
-//     | {
-//         areaCode: number;
-//         num: number;
-//       };
-// }
+interface PhoneNumberDict {
+  // arr[0],  foo['myProp']
+  [numberName: string]:
+    | undefined
+    | {
+        areaCode: number;
+        num: number;
+      };
+}
 
-// const phoneDict: PhoneNumberDict = {
-//   office: { areaCode: 321, num: 5551212 },
-//   home: { areaCode: 321, num: 5550010 } // try editing me
-// };
+const phoneDict: PhoneNumberDict = {
+  office: { areaCode: 321, num: 5551212 },
+  home: { areaCode: 321, num: 5550010 }, // try editing me
+  iphone: { areaCode: 45, num: 1231231}
+};
 
 // at most, a type may have one string and one number index signature
 
@@ -83,24 +84,24 @@ type NumVal = 1 | 2 | 3 | NumVal[];
 
 // // augment the existing PhoneNumberDict
 // // i.e., imported it from a library, adding stuff to it
-// interface PhoneNumberDict {
-//   home: {
-//     /**
-//      * (7) interfaces are "open", meaning any declarations of the
-//      * -   same name are merged
-//      */
-//     areaCode: number;
-//     num: number;
-//   };
-//   office: {
-//     areaCode: number;
-//     num: number;
-//   };
-// }
+interface PhoneNumberDict {
+  home: {
+    /**
+     * (7) interfaces are "open", meaning any declarations of the
+     * -   same name are merged
+     */
+    areaCode: number;
+    num: number;
+  };
+  office: {
+    areaCode: number;
+    num: number;
+  };
+}
 
-// phoneDict.home;   // definitely present
-// phoneDict.office; // definitely present
-// phoneDict.mobile; // MAYBE present
+phoneDict.home;   // definitely present
+phoneDict.office; // definitely present
+phoneDict.mobile; // MAYBE present
 
 // == TYPE ALIASES vs INTERFACES == //
 
@@ -109,16 +110,16 @@ type NumVal = 1 | 2 | 3 | NumVal[];
  * -   can reference themselves
  */
 
-// type NumberVal = 1 | 2 | 3 | NumberVal[];
+type NumberVal = 1 | 2 | 3 | NumberVal[];
 
 /**
  * (8) Interfaces are initialized lazily, so combining it
  * -   w/ a type alias allows for recursive types!
  */
 
-// type StringVal = "a" | "b" | "c" | StringArr;
+type StringVal = "a" | "b" | "c" | StringArr;
 
-// // type StringArr = StringVal[];
+// type StringArr = StringVal[];
 // interface StringArr {
 //   // arr[0]
 //   [k: number]: "a" | "b" | "c" | StringVal[];
