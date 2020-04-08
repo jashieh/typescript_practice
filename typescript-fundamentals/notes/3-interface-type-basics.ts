@@ -4,10 +4,11 @@ import { HasPhoneNumber, HasEmail } from "./1-basics";
 /**
  * (1) Type aliases allow us to give a type a name
  */
-// type StringOrNumber = string | number;
+type StringOrNumber = string | number;
 
+let test: StringOrNumber = "test";
 // // this is the ONLY time you'll see a type on the RHS of assignment
-// type HasName = { name: string };
+type HasName = { name: string };
 
 // NEW in TS 3.7: Self-referencing types!
 type NumVal = 1 | 2 | 3 | NumVal[];
