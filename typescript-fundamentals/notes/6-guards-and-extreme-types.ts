@@ -6,12 +6,12 @@ import { HasEmail } from "./1-basics";
  * (1) "Top types" are types that can hold any value. Typescript has two of them
  */
 
-// let myAny: any = 32;
-// let myUnknown: unknown = "hello, unknown";
+let myAny: any = 32;
+let myUnknown: unknown = "hello, unknown";
 
 // Note that we can do whatever we want with an any, but nothing with an unknown
 
-// myAny.foo.bar.baz;
+myAny.foo.bar.baz;
 // myUnknown.foo;
 
 /**
@@ -62,9 +62,9 @@ import { HasEmail } from "./1-basics";
 // }
 
 // // my most common guard
-// function isDefined<T>(arg: T | undefined): arg is T {
-//   return typeof arg !== "undefined";
-// }
+function isDefined<T>(arg: T | undefined): arg is T {
+  return typeof arg !== "undefined";
+}
 
 // // NEW TS 3.7: assertion-based type guards!
 // function assertIsStringArray(arr: any[]): asserts arr is string[] {

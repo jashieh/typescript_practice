@@ -45,10 +45,10 @@ interface Person {
   lastName?: string,
   email?: string,
   salutation?: string,
-  phones?: {
+  phones: {
     [k: string]: string;
   },
-  addresses?: {
+  addresses: {
     [k: string]: {
       houseNumber: number,
       city: string,

@@ -6,19 +6,19 @@ import { HasEmail } from "./1-basics";
  */
 
 // // param determines the value of x
-// function wrappedValue(x: any) {
-//   return {
-//     value: x
-//   };
-// }
+function wrappedValue(x: any) {
+  return {
+    value: x
+  };
+}
 
 // // type param determines the type of x
-// interface WrappedValue<X> {
-//   value: X;
-// }
+interface WrappedValue<X> {
+  value: X;
+}
 
-// let val: WrappedValue<string[]> = { value: [] };
-// val.value;
+let val: WrappedValue<string[]> = { value: [] };
+val.value;
 
 /**
  * we can name these params whatever we want, but a common convention
@@ -31,13 +31,13 @@ import { HasEmail } from "./1-basics";
  */
 
 // // for Array.prototype.filter
-// interface FilterFunction<T = any> {
-//   (val: T): boolean;
-// }
+interface FilterFunction<T = any> {
+  (val: T): boolean;
+}
 
-// const stringFilter: FilterFunction<string> = val => typeof val === "string";
+const stringFilter: FilterFunction<string> = val => typeof val === "string";
 // stringFilter(0); // 🚨 ERROR
-// stringFilter("abc"); // ✅ OK
+stringFilter("abc"); // ✅ OK
 
 // // can be used with any value
 // const truthyFilter: FilterFunction = val => val;
@@ -51,20 +51,20 @@ import { HasEmail } from "./1-basics";
  * -   things that are based on your type parameter are fine too
  */
 
-// function resolveOrTimeout<T>(promise: Promise<T>, timeout: number): Promise<T> {
-//   return new Promise<T>((resolve, reject) => {
-//     // start the timeout, reject when it triggers
-//     const task = setTimeout(() => reject("time up!"), timeout);
+function resolveOrTimeout<T>(promise: Promise<T>, timeout: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    // start the timeout, reject when it triggers
+    const task = setTimeout(() => reject("time up!"), timeout);
 
-//     promise.then(val => {
-//       // cancel the timeout
-//       clearTimeout(task);
+    promise.then(val => {
+      // cancel the timeout
+      clearTimeout(task);
 
-//       // resolve with the value
-//       resolve(val);
-//     });
-//   });
-// }
+      // resolve with the value
+      resolve(val);
+    });
+  });
+}
 // resolveOrTimeout(fetch(""), 3000);
 
 /**
